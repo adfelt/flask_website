@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
-from datetime import date
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -24,17 +24,17 @@ class Users(db.Model):
     posts = db.relationship('Post',backref='author',lazy=True)
     
     def __repr__(self):
-        return f'Users {self.username}, {self.email}, {self.image_file}'
+        return f'User({self.username}, {self.email}, {self.image_file})'
     
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(20), nullable = False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=date.utcnow)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),nullable=False)
     
     def __repr__(self):
-        return f'Post {self.title}, {self.date_posted}'
+        return f'Post({self.title}, {self.date_posted})'
 
 
 posts = [
