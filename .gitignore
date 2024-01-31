@@ -2,3 +2,6 @@ __pycache__
 venv_flask_site
 site.db
 instance
+.png
+.jpg
+static
