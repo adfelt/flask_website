@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block content %}
+    <article class="media container border pt-3 ps-3">
+        <div class="row row-cols-auto align-items-start">
+            <div class="col-xs-1 me-xs-2">
+                <img class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/' + post.author.image_file) }}">
+            </div>
+            <div class="col-xs-7 ms-xs-2 media-body">
+                <div class="article-metadata">
+                    <a class="me-1" href="#">{{ post.author.username }}</a>
+                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                </div>
+            
+                <h2 class="article-title">{{ post.title }}</h2>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
+        </div>
+    </article>
+
+{% endblock content %}
