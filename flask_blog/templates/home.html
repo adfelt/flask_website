@@ -3,14 +3,20 @@
 
         <h1>Home Page</h1>
         {%for post in posts%} 
-            <article class="media content-section">
-            <div class="media-body">
+            <article class="media container border pt-3 ps-3">
+            <div class="row row-cols-auto align-items-start">
+            <div class="col-xs-1 me-xs-2">
+            <img class="rounded-circle article-img" src="{{ url_for('static',filename='profile_pics/' + post.author.image_file) }}">
+            </div>
+            <div class="col-xs-7 ms-xs-2 media-body">
                 <div class="article-metadata">
-                <a class="ms-2" href="#">{{ post.author }}</a>
-                <small class="text-muted">{{ post.date_posted }}</small>
+                <a class="me-1" href="#">{{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                 </div>
+            
                 <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
                 <p class="article-content">{{ post.content }}</p>
+            </div>
             </div>
             </article>
         {%endfor%}
