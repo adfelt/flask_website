@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 
-        <h1>Home Page</h1>
+        <h1 class="mb-3"> {{ user.username }} ({{ posts.total }}) </h1>
         {%for post in posts.items%} 
             <article class="media container border pt-3 ps-3">
             <div class="row row-cols-auto align-items-start">
@@ -25,9 +25,9 @@
         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
             {% if page_num %}
                 {% if posts.page == page_num %}
-                    <a class="btn text-center btn-info mb-4 ms-1 me-1 " href="{{url_for('home',page=page_num)}}"> {{ page_num }}</a>
+                    <a class="btn text-center btn-info mb-4 ms-1 me-1 " href="{{url_for('user_posts', username=user.username,page=page_num)}}"> {{ page_num }}</a>
                 {% else %}
-                <a class="btn text-center btn-outline-info mb-4 ms-1 me-1 " href="{{url_for('home',page=page_num)}}"> {{ page_num }}</a>
+                <a class="btn text-center btn-outline-info mb-4 ms-1 me-1 " href="{{url_for('user_posts', username=user.username,page=page_num)}}"> {{ page_num }}</a>
                 {% endif %}
             {% else %}
                 ...
