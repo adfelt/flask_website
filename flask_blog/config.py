@@ -13,3 +13,6 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('EMAIL_USER')
     MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+    # Numverify Config
+    NUMVERIFY_API_KEY = '8f236a6c88f94359a22a053548a6b32a'
+    
